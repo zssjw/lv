@@ -1,6 +1,7 @@
 name: Deploy Worker Script
 
 on:
+  workflow_dispatch:   # 加上这行，就会出现手动运行按钮
   push:
     tags:
       - '*'  # 当任何标签被推送时触发
