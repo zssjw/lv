@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Prepare worker script
+      - name: Prepare worker script and config
         run: |
           if [ -f "明文源吗" ]; then
             cp "明文源吗" "worker.js"
@@ -21,9 +21,22 @@ jobs:
             cp "_worker.js" "worker.js"
           fi
 
+          cat << 'EOF' > wrangler.toml
+          name = "lv"
+          main = "worker.js"
+          compatibility_date = "2024-09-01"
+
+          [vars]
+          u = "b4931764-f8c2-4bb7-bcb3-fabdeb29529e"
+
+          [[kv_namespaces]]
+          binding = "KV"
+          id = "503269eea07a4bce85f95f99611f5d29"
+          EOF
+
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy worker.js --name lv --compatibility-date 2024-09-01 --var u:b4931764-f8c2-4bb7-bcb3-fabdeb29529e --kv KV:503269eea07a4bce85f95f99611f5d29
+          command: deploy
