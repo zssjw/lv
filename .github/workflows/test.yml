@@ -3,8 +3,8 @@ name: Auto Deploy to Cloudflare Worker
 on:
   push:
     branches:
-      - main  # 当 main 分支有更新（包括你点 Sync fork）时自动触发
-  workflow_dispatch:  # 保留手动触发按钮
+      - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -26,4 +26,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy worker.js --name lv --compatibility-date 2024-09-01
+          command: deploy worker.js --name lv --compatibility-date 2024-09-01 --var u:b4931764-f8c2-4bb7-bcb3-fabdeb29529e
