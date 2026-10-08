@@ -30,6 +30,10 @@ jobs:
           u = "b4931764-f8c2-4bb7-bcb3-fabdeb29529e"
 
           [[kv_namespaces]]
+          binding = "kv"
+          id = "503269eea07a4bce85f95f99611f5d29"
+
+          [[kv_namespaces]]
           binding = "KV"
           id = "503269eea07a4bce85f95f99611f5d29"
           EOF
