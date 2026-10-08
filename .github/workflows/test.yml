@@ -26,4 +26,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy worker.js --name lv --compatibility-date 2024-09-01 --var u:b4931764-f8c2-4bb7-bcb3-fabdeb29529e
+          command: deploy worker.js --name lv --compatibility-date 2024-09-01 --var u:b4931764-f8c2-4bb7-bcb3-fabdeb29529e --kv KV:503269eea07a4bce85f95f99611f5d29
